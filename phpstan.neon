@@ -1,6 +1,8 @@
 includes:
 #	- vendor/phpstan/phpstan-doctrine/rules.neon
 	- vendor/phpstan/phpstan-nette/rules.neon
+	- vendor/phpstan/phpstan-phpunit/extension.neon
+	- vendor/phpstan/phpstan-phpunit/rules.neon
 	- vendor/phpstan/phpstan-strict-rules/rules.neon
 	- vendor/shipmonk/phpstan-rules/rules.neon
 	- phpstan-baseline.neon
