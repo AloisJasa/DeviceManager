@@ -1,0 +1,20 @@
+services:
+  core:
+    build: .
+    volumes:
+      - ./:/var/www/html:delegated
+      - ./docker/php.ini:/usr/local/etc/php/conf.d/php.ini:delegated
+      - ./docker/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:delegated
+      - ~/.composer/docker-cache:/root/.composer/cache:cached
+    environment:
+      PHP_IDE_CONFIG: serverName=device-manager.localhost
+      XDEBUG_CONFIG: client_host=host.docker.internal
+      XDEBUG_SESSION: 1
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.device-manager-core.rule=Host(`device-manager.localhost`)"
+
+networks:
+  default:
+    external: true
+    name: traefik-network
