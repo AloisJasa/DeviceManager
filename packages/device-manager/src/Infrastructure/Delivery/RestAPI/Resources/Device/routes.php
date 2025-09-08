@@ -2,6 +2,7 @@
 
 use AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Resources\Device\CreateDeviceHandler;
 use AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Resources\Device\GetDeviceHandler;
+use AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Resources\Device\ListDevicesHandler;
 use Mezzio\Application;
 
 return static function (Application $mezzioApplication): void {
@@ -11,6 +12,13 @@ return static function (Application $mezzioApplication): void {
 			GetDeviceHandler::class,
 		],
 		GetDeviceHandler::class,
+	);
+	$mezzioApplication->get(
+		'/devices',
+		[
+			ListDevicesHandler::class,
+		],
+		ListDevicesHandler::class,
 	);
 	$mezzioApplication->post(
 		'/devices',

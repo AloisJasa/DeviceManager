@@ -2,7 +2,7 @@
 
 namespace AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Resources\User;
 
-use AloisJasa\DeviceManager\Application\User\GetUserCase;
+use AloisJasa\DeviceManager\Application\User\GetUserUseCase;
 use Laminas\Diactoros\Response\JsonResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -11,7 +11,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 readonly class GetUserHandler implements RequestHandlerInterface
 {
 	public function __construct(
-		private GetUserCase $getUserCase,
+		private GetUserUseCase $getUserCase,
 	)
 	{
 	}

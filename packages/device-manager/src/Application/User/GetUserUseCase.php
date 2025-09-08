@@ -5,7 +5,7 @@ namespace AloisJasa\DeviceManager\Application\User;
 use AloisJasa\DeviceManager\Domain\User\UserId;
 use AloisJasa\DeviceManager\Domain\User\UserRepository;
 
-readonly class GetUserCase
+readonly class GetUserUseCase
 {
 	public function __construct(
 		private UserRepository $userRepository,

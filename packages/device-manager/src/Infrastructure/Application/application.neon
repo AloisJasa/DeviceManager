@@ -1,4 +1,5 @@
 services:
-	- AloisJasa\DeviceManager\Application\Device\CreateDeviceCase
-	- AloisJasa\DeviceManager\Application\Device\GetDeviceCase
-	- AloisJasa\DeviceManager\Application\User\GetUserCase
+	- AloisJasa\DeviceManager\Application\Device\CreateDeviceUseCase
+	- AloisJasa\DeviceManager\Application\Device\GetDeviceUseCase
+	- AloisJasa\DeviceManager\Application\User\GetUserUseCase
+	- AloisJasa\DeviceManager\Application\Device\ListDevicesUseCase

@@ -3,15 +3,19 @@
 namespace AloisJasa\DeviceManager\Infrastructure\Domain\Device;
 
 use AloisJasa\DeviceManager\Domain\Device\Device;
+use AloisJasa\DeviceManager\Domain\Device\DeviceCollection;
 use AloisJasa\DeviceManager\Domain\Device\DeviceId;
 use AloisJasa\DeviceManager\Domain\Device\Exception\DeviceNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+use Happyr\DoctrineSpecification\Repository\EntitySpecificationRepository;
+use Happyr\DoctrineSpecification\Specification\Specification;
+use Traversable;
 
 /**
- * @extends EntityRepository<Device>
+ * @extends EntitySpecificationRepository<Device>
  */
-class DeviceRepository extends EntityRepository implements \AloisJasa\DeviceManager\Domain\Device\DeviceRepository
+class DeviceRepository extends EntitySpecificationRepository implements \AloisJasa\DeviceManager\Domain\Device\DeviceRepository
 {
 	public function __construct(EntityManagerInterface $em)
 	{
@@ -28,5 +32,21 @@ class DeviceRepository extends EntityRepository implements \AloisJasa\DeviceMana
 	public function get(DeviceId $deviceId): Device
 	{
 		return $this->find($deviceId) ?? throw new DeviceNotFoundException($deviceId);
+	}
+
+
+	public function query(Specification $specification): DeviceCollection
+	{
+		$query = $this->getQuery($specification);
+
+		$paginator = new Paginator($query);
+
+		/** @var Traversable<int, Device> $iterator */
+		$iterator = $paginator->getIterator();
+
+		return new DeviceCollection(
+			$paginator->count(),
+			...iterator_to_array($iterator, true),
+		);
 	}
 }

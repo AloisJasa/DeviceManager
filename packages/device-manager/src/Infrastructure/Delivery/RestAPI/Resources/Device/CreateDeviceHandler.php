@@ -2,7 +2,7 @@
 
 namespace AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Resources\Device;
 
-use AloisJasa\DeviceManager\Application\Device\CreateDeviceCase;
+use AloisJasa\DeviceManager\Application\Device\CreateDeviceUseCase;
 use AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Exception\ApplicationException;
 use Laminas\Diactoros\Response\JsonResponse;
 use Psr\Http\Message\ResponseInterface;
@@ -12,7 +12,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 readonly class CreateDeviceHandler implements RequestHandlerInterface
 {
 	public function __construct(
-		private CreateDeviceCase $createDeviceCase,
+		private CreateDeviceUseCase $createDeviceCase,
 	)
 	{
 	}

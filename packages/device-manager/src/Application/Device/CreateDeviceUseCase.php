@@ -10,7 +10,7 @@ use AloisJasa\DeviceManager\Domain\Device\DeviceType;
 use AloisJasa\DeviceManager\Domain\User\UserId;
 use AloisJasa\DeviceManager\Domain\User\UserRepository;
 
-readonly class CreateDeviceCase
+readonly class CreateDeviceUseCase
 {
 	public function __construct(
 		private DeviceRepository $deviceRepository,
