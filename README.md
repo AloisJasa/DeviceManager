@@ -4,6 +4,8 @@
 - setup traefik (or any other reverse proxy)
 - copy .env.example to .env and set up your environment variables
 - docker-compose up -d
+- docker compose exec core bash #připojení do kontejneru
+- composer install -o
 - make init-database
 - make init-fixtures
 
