@@ -1,0 +1,28 @@
+#
+# WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+# https://nette.org/security-warning
+#
+parameters:
+	httpHost: ::getenv('HTTPHOST')
+	database:
+		user: ::getenv('POSTGRES_USER')
+		password: ::getenv('POSTGRES_PASSWORD')
+		dbname: ::getenv('POSTGRES_DB')
+		driver: 'pdo_pgsql'
+		host: ::getenv('POSTGRES_HOST')
+		port: 5432
+		migrationsDir: %packageRoot%/migrations
+		migrationsTable: 'doctrine_migrations'
+	api:
+		docPath: %packageRoot%/doc/device-manager-api-doc.v1.yaml
+		apiPrefix: ''
+
+extensions:
+	console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+
+console:
+	url: %httpHost%
+
+includes:
+	- ../src/Domain/domain.neon
+	- ../src/Infrastructure/infrastructure.neon

@@ -1,0 +1,42 @@
+extensions:
+	nettrine.cache: Nettrine\Cache\DI\CacheExtension
+
+	# DBAL
+	nettrine.dbal: Nettrine\DBAL\DI\DbalExtension
+	nettrine.dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension
+
+	# ORM
+	nettrine.orm: Nettrine\ORM\DI\OrmExtension
+	nettrine.orm.cache: Nettrine\ORM\DI\OrmCacheExtension
+	nettrine.orm.console: Nettrine\ORM\DI\OrmConsoleExtension
+	nettrine.orm.xml: Nettrine\ORM\DI\OrmXmlExtension
+
+	nettrine.migrations: Nettrine\Migrations\DI\MigrationsExtension
+
+nettrine.orm.xml:
+	mapping: [
+		AloisJasa\DeviceManager: %srcDir%/Infrastructure/Persistence/Doctrine/Mapping,
+	]
+	fileExtension: .dcm.xml
+	simple: false
+
+nettrine.migrations:
+	directories: [
+			AloisJasa\DeviceManager\Migrations: %database.migrationsDir%
+		]
+	versionsOrganization: year_and_month
+	table: %database.migrationsTable%
+
+nettrine.dbal:
+	debug:
+		panel: %debugMode%
+	connection:
+		driver: %database.driver%
+		user: %database.user%
+		password: %database.password%
+		dbname: %database.dbname%
+		host: %database.host%
+		port: %database.port%
+		charset: utf8
+		serverVersion: '17.0'
+		types:

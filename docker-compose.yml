@@ -1,6 +1,8 @@
 services:
   core:
     build: .
+    env_file:
+      - .env
     volumes:
       - ./:/var/www/html:delegated
       - ./docker/php.ini:/usr/local/etc/php/conf.d/php.ini:delegated
@@ -13,7 +15,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.device-manager-core.rule=Host(`device-manager.localhost`)"
-    links:
+    depends_on:
       - whale-postgres-db
 
   whale-postgres-db:
@@ -24,9 +26,9 @@ services:
       - "5432:5432"
     restart: unless-stopped
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
-      POSTGRES_USER: ${POSTGRES_USER:-app}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-secret}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       TZ: Europe/Prague
 
   whale-adminer:
