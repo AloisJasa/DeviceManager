@@ -5,7 +5,7 @@ namespace AloisJasa\DeviceManager\Application\Device;
 use AloisJasa\DeviceManager\Domain\Device\DeviceId;
 use AloisJasa\DeviceManager\Domain\Device\DeviceRepository;
 
-readonly class GetDeviceUserCase
+readonly class GetDeviceCase
 {
 	public function __construct(
 		private DeviceRepository $deviceRepository,
