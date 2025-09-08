@@ -1,0 +1,3 @@
+services:
+	- AloisJasa\DeviceManager\Infrastructure\Domain\User\UserRepository
+	- AloisJasa\DeviceManager\Infrastructure\Domain\Device\DeviceRepository

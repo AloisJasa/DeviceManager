@@ -24,5 +24,4 @@ console:
 	url: %httpHost%
 
 includes:
-	- ../src/Domain/domain.neon
 	- ../src/Infrastructure/infrastructure.neon

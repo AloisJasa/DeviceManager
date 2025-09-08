@@ -1,0 +1,3 @@
+services:
+	- AloisJasa\DeviceManager\Application\Device\CreateDeviceUserCase
+	- AloisJasa\DeviceManager\Application\Device\GetDeviceUserCase

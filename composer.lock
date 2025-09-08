@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "436d9b5a6ad604984b0b9cb7639298a5",
+    "content-hash": "c20b2b6d5729cbf297445ad1de93a330",
     "packages": [
         {
             "name": "brick/math",
@@ -2721,47 +2721,47 @@
         },
         {
             "name": "symfony/console",
-            "version": "v7.3.3",
+            "version": "v6.4.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "cb0102a1c5ac3807cf3fdf8bea96007df7fdbea7"
+                "reference": "273fd29ff30ba0a88ca5fb83f7cf1ab69306adae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/cb0102a1c5ac3807cf3fdf8bea96007df7fdbea7",
-                "reference": "cb0102a1c5ac3807cf3fdf8bea96007df7fdbea7",
+                "url": "https://api.github.com/repos/symfony/console/zipball/273fd29ff30ba0a88ca5fb83f7cf1ab69306adae",
+                "reference": "273fd29ff30ba0a88ca5fb83f7cf1ab69306adae",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.2",
+                "php": ">=8.1",
                 "symfony/deprecation-contracts": "^2.5|^3",
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/service-contracts": "^2.5|^3",
-                "symfony/string": "^7.2"
+                "symfony/string": "^5.4|^6.0|^7.0"
             },
             "conflict": {
-                "symfony/dependency-injection": "<6.4",
-                "symfony/dotenv": "<6.4",
-                "symfony/event-dispatcher": "<6.4",
-                "symfony/lock": "<6.4",
-                "symfony/process": "<6.4"
+                "symfony/dependency-injection": "<5.4",
+                "symfony/dotenv": "<5.4",
+                "symfony/event-dispatcher": "<5.4",
+                "symfony/lock": "<5.4",
+                "symfony/process": "<5.4"
             },
             "provide": {
                 "psr/log-implementation": "1.0|2.0|3.0"
             },
             "require-dev": {
                 "psr/log": "^1|^2|^3",
-                "symfony/config": "^6.4|^7.0",
-                "symfony/dependency-injection": "^6.4|^7.0",
-                "symfony/event-dispatcher": "^6.4|^7.0",
+                "symfony/config": "^5.4|^6.0|^7.0",
+                "symfony/dependency-injection": "^5.4|^6.0|^7.0",
+                "symfony/event-dispatcher": "^5.4|^6.0|^7.0",
                 "symfony/http-foundation": "^6.4|^7.0",
                 "symfony/http-kernel": "^6.4|^7.0",
-                "symfony/lock": "^6.4|^7.0",
-                "symfony/messenger": "^6.4|^7.0",
-                "symfony/process": "^6.4|^7.0",
-                "symfony/stopwatch": "^6.4|^7.0",
-                "symfony/var-dumper": "^6.4|^7.0"
+                "symfony/lock": "^5.4|^6.0|^7.0",
+                "symfony/messenger": "^5.4|^6.0|^7.0",
+                "symfony/process": "^5.4|^6.0|^7.0",
+                "symfony/stopwatch": "^5.4|^6.0|^7.0",
+                "symfony/var-dumper": "^5.4|^6.0|^7.0"
             },
             "type": "library",
             "autoload": {
@@ -2795,7 +2795,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v7.3.3"
+                "source": "https://github.com/symfony/console/tree/v6.4.25"
             },
             "funding": [
                 {
@@ -2815,7 +2815,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-08-25T06:35:40+00:00"
+            "time": "2025-08-22T10:21:53+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -4188,6 +4188,92 @@
             "time": "2025-07-17T20:45:56+00:00"
         },
         {
+            "name": "doctrine/data-fixtures",
+            "version": "1.8.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/data-fixtures.git",
+                "reference": "6fb221da56dae2011b33d47508e3b8aeb1d91db5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/6fb221da56dae2011b33d47508e3b8aeb1d91db5",
+                "reference": "6fb221da56dae2011b33d47508e3b8aeb1d91db5",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/deprecations": "^0.5.3 || ^1.0",
+                "doctrine/persistence": "^2.0 || ^3.0",
+                "php": "^7.4 || ^8.0",
+                "symfony/polyfill-php80": "^1"
+            },
+            "conflict": {
+                "doctrine/dbal": "<3.5 || >=5",
+                "doctrine/orm": "<2.14 || >=4",
+                "doctrine/phpcr-odm": "<1.3.0"
+            },
+            "require-dev": {
+                "doctrine/annotations": "^1.12 || ^2",
+                "doctrine/coding-standard": "^13",
+                "doctrine/dbal": "^3.5 || ^4",
+                "doctrine/mongodb-odm": "^1.3.0 || ^2.0.0",
+                "doctrine/orm": "^2.14 || ^3",
+                "ext-sqlite3": "*",
+                "fig/log-test": "^1",
+                "phpstan/phpstan": "2.1.17",
+                "phpunit/phpunit": "^9.6.13 || 10.5.45",
+                "psr/log": "^1.1 || ^2 || ^3",
+                "symfony/cache": "^5.4 || ^6.3 || ^7",
+                "symfony/var-exporter": "^5.4 || ^6.3 || ^7"
+            },
+            "suggest": {
+                "alcaeus/mongo-php-adapter": "For using MongoDB ODM 1.3 with PHP 7 (deprecated)",
+                "doctrine/mongodb-odm": "For loading MongoDB ODM fixtures",
+                "doctrine/orm": "For loading ORM fixtures",
+                "doctrine/phpcr-odm": "For loading PHPCR ODM fixtures"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Common\\DataFixtures\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                }
+            ],
+            "description": "Data Fixtures for all Doctrine Object Managers",
+            "homepage": "https://www.doctrine-project.org",
+            "keywords": [
+                "database"
+            ],
+            "support": {
+                "issues": "https://github.com/doctrine/data-fixtures/issues",
+                "source": "https://github.com/doctrine/data-fixtures/tree/1.8.2"
+            },
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fdata-fixtures",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2025-06-10T07:00:05+00:00"
+        },
+        {
             "name": "myclabs/deep-copy",
             "version": "1.13.4",
             "source": {
@@ -4246,6 +4332,81 @@
                 }
             ],
             "time": "2025-08-01T08:46:24+00:00"
+        },
+        {
+            "name": "nettrine/fixtures",
+            "version": "v0.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contributte/doctrine-fixtures.git",
+                "reference": "c5746665459f355230cef6368974301d2497c4dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contributte/doctrine-fixtures/zipball/c5746665459f355230cef6368974301d2497c4dd",
+                "reference": "c5746665459f355230cef6368974301d2497c4dd",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/data-fixtures": "^1.6.6",
+                "doctrine/orm": "^2.15.2",
+                "nette/di": "^3.1.2",
+                "php": ">=8.1",
+                "symfony/console": "^6.2.0"
+            },
+            "require-dev": {
+                "contributte/phpstan": "^0.1",
+                "contributte/qa": "^0.4",
+                "contributte/tester": "^0.3",
+                "mockery/mockery": "^1.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nettrine\\Fixtures\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Milan Felix Šulc",
+                    "homepage": "https://f3l1x.io"
+                },
+                {
+                    "name": "Josef Benjac",
+                    "homepage": "http://josefbenjac.com"
+                }
+            ],
+            "description": "Doctrine Fixtures for Nette Framework",
+            "homepage": "https://github.com/contributte/doctrine-fixtures",
+            "keywords": [
+                "doctrine",
+                "fixtures",
+                "nette"
+            ],
+            "support": {
+                "issues": "https://github.com/contributte/doctrine-fixtures/issues",
+                "source": "https://github.com/contributte/doctrine-fixtures/tree/v0.7.2"
+            },
+            "funding": [
+                {
+                    "url": "https://contributte.org/partners.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/f3l1x",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-10-03T23:24:34+00:00"
         },
         {
             "name": "nikic/php-parser",

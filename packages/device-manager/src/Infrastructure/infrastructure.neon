@@ -1,2 +1,4 @@
 includes:
+	- Domain/domain.neon
+	- Application/application.neon
 	- Persistence/persistence.neon

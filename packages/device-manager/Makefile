@@ -8,3 +8,6 @@ help:
 	make -pn | grep "^.PHONY:"
 
 production:
+
+load-fixtures:
+	tests/console doctrine:fixtures:load --append

@@ -40,3 +40,5 @@ nettrine.dbal:
 		charset: utf8
 		serverVersion: '17.0'
 		types:
+			deviceManager.user.userId: AloisJasa\DeviceManager\Infrastructure\Persistence\Doctrine\Type\UserIdType
+			deviceManager.device.deviceId: AloisJasa\DeviceManager\Infrastructure\Persistence\Doctrine\Type\DeviceIdType
