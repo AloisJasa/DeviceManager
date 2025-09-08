@@ -5,3 +5,4 @@ services:
 	- AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Resources\Device\GetDeviceHandler
 	- AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Resources\User\GetUserHandler
 	- AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Resources\Device\CreateDeviceHandler
+	- AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Resources\Device\ListDevicesHandler
