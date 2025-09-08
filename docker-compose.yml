@@ -1,6 +1,8 @@
 services:
   core:
     build: .
+    env_file:
+      - .env
     volumes:
       - ./:/var/www/html:delegated
       - ./docker/php.ini:/usr/local/etc/php/conf.d/php.ini:delegated
@@ -13,7 +15,35 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.device-manager-core.rule=Host(`device-manager.localhost`)"
+    depends_on:
+      - whale-postgres-db
 
+  whale-postgres-db:
+    image: postgres:17-alpine
+    volumes:
+      - ./docker/postgres/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      TZ: Europe/Prague
+
+  whale-adminer:
+    image: adminer
+    links:
+      - whale-postgres-db
+    environment:
+      VIRTUAL_HOST: whale-adminer.localhost
+      ADMINER_PLUGINS: "backward-keys"
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.whale-adminer.rule=Host(`whale-adminer.localhost`)"
+      - "traefik.http.routers.whale-adminer.entrypoints=web"
+      - "traefik.http.services.whale-adminer.loadbalancer.server.port=8080"
 networks:
   default:
     external: true

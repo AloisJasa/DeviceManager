@@ -7,6 +7,7 @@ RUN apt-get update -y \
         git \
         unzip \
         libzip-dev \
+        libpq-dev \
         wget \
         vim \
     && apt-get clean -y \
@@ -18,7 +19,9 @@ RUN docker-php-ext-configure intl
 RUN docker-php-ext-install \
     opcache \
     intl \
-    pcntl
+    pcntl \
+    pgsql \
+    pdo_pgsql
 
 
 RUN mkdir -p /usr/src/php/ext/ \
