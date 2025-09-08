@@ -1,2 +1,91 @@
 parameters:
 	ignoreErrors:
+		-
+			message: '#^Only booleans are allowed in a negated boolean, array given\.$#'
+			identifier: booleanNot.exprNotBoolean
+			count: 1
+			path: packages/device-manager-sdk/src/DI/DeviceManagerSDKExtension.php
+
+		-
+			message: '#^Parameter \#1 \$baseUri of class AloisJasa\\DeviceManagerSDK\\Client\\Config constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: packages/device-manager-sdk/src/DI/DeviceManagerSDKExtension.php
+
+		-
+			message: '#^Parameter \#2 \$timeout of class AloisJasa\\DeviceManagerSDK\\Client\\Config constructor expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: packages/device-manager-sdk/src/DI/DeviceManagerSDKExtension.php
+
+		-
+			message: '#^Using \(array\) is discouraged, please avoid using that\.$#'
+			identifier: shipmonk.forbiddenCast
+			count: 1
+			path: packages/device-manager-sdk/src/DI/DeviceManagerSDKExtension.php
+
+		-
+			message: '#^Parameter \#1 \$data of static method AloisJasa\\DeviceManagerSDK\\Model\\User\\User\:\:createFromArray\(\) expects array\<mixed\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: packages/device-manager-sdk/src/Model/Device/Device.php
+
+		-
+			message: '#^Parameter \#1 \$id of class AloisJasa\\DeviceManagerSDK\\Model\\Device\\Device constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: packages/device-manager-sdk/src/Model/Device/Device.php
+
+		-
+			message: '#^Parameter \#1 \$value of static method AloisJasa\\DeviceManagerSDK\\Model\\Device\\DeviceOS\:\:from\(\) expects int\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: packages/device-manager-sdk/src/Model/Device/Device.php
+
+		-
+			message: '#^Parameter \#1 \$value of static method AloisJasa\\DeviceManagerSDK\\Model\\Device\\DeviceType\:\:from\(\) expects int\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: packages/device-manager-sdk/src/Model/Device/Device.php
+
+		-
+			message: '#^Parameter \#2 \$hostname of class AloisJasa\\DeviceManagerSDK\\Model\\Device\\Device constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: packages/device-manager-sdk/src/Model/Device/Device.php
+
+		-
+			message: '#^Parameter \#1 \$callback of function array_map expects \(callable\(mixed\)\: mixed\)\|null, Closure\(array\)\: AloisJasa\\DeviceManagerSDK\\Model\\Device\\Device given\.$#'
+			identifier: argument.type
+			count: 1
+			path: packages/device-manager-sdk/src/Model/Device/DeviceCollection.php
+
+		-
+			message: '#^Parameter \#1 \$totalCount of class AloisJasa\\DeviceManagerSDK\\Model\\Device\\DeviceCollection constructor expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: packages/device-manager-sdk/src/Model/Device/DeviceCollection.php
+
+		-
+			message: '#^Parameter \#2 \$array of function array_map expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: packages/device-manager-sdk/src/Model/Device/DeviceCollection.php
+
+		-
+			message: '#^Parameter \#1 \$id of class AloisJasa\\DeviceManagerSDK\\Model\\User\\User constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: packages/device-manager-sdk/src/Model/User/User.php
+
+		-
+			message: '#^Parameter \#2 \$firstName of class AloisJasa\\DeviceManagerSDK\\Model\\User\\User constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: packages/device-manager-sdk/src/Model/User/User.php
+
+		-
+			message: '#^Parameter \#3 \$lastName of class AloisJasa\\DeviceManagerSDK\\Model\\User\\User constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: packages/device-manager-sdk/src/Model/User/User.php
