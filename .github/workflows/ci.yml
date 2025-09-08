@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [cs, phpstan, unit]
+    name: '${{ matrix.target }}'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Composer
+        uses: ramsey/composer-install@v2
+
+      - name: CS
+        run: make ${{ matrix.target }}
+
+  composer-validate:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    name: Composer validate
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          clean: false
+          fetch-depth: 0
+
+      - uses: technote-space/get-diff-action@v6
+        with:
+          FILES: |
+            composer.json
+            composer.lock
+
+      - name: "Install PHP"
+        if: (env.GIT_DIFF && env.MATCHED_FILES)
+        uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: '8.3'
+
+      - name: Composer validate
+        if: (env.GIT_DIFF && env.MATCHED_FILES)
+        run: |
+          composer validate

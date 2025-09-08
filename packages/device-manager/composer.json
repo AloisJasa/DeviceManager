@@ -1,6 +1,7 @@
 {
 	"name": "aloisjasa/device-manager",
 	"description": "Device Manager",
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "Alois Jaša",
@@ -10,6 +11,7 @@
 	"prefer-stable": true,
 	"require": {
 		"php": "^8.3",
+		"ext-pgsql": "*",
 		"contributte/console": "^0.10.1",
 		"happyr/doctrine-specification": "^2.1",
 		"nette/bootstrap": "^3.2",
