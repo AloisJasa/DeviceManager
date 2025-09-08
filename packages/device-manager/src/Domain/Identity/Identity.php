@@ -4,8 +4,9 @@ namespace AloisJasa\DeviceManager\Domain\Identity;
 
 use AloisJasa\DeviceManager\Domain\Identity\Exception\InvalidIdentityValueException;
 use Ramsey\Uuid\Uuid;
+use Stringable;
 
-abstract class Identity
+abstract class Identity implements Stringable
 {
 	public const string FORMAT_PATTERN = '/^[a-zA-Z0-9-_.]+$/';
 
@@ -31,5 +32,11 @@ abstract class Identity
 		return new static(
 			Uuid::uuid4()->toString(),
 		);
+	}
+
+
+	public function __toString(): string
+	{
+		return $this->value;
 	}
 }
