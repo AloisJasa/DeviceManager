@@ -13,6 +13,7 @@ jobs:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         target: [cs, phpstan, unit]
     name: '${{ matrix.target }}'
@@ -27,7 +28,7 @@ jobs:
       - name: Composer
         uses: ramsey/composer-install@v2
 
-      - name: CS
+      - name: Check
         run: make ${{ matrix.target }}
 
   composer-validate:
