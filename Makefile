@@ -4,6 +4,11 @@
 help:
 	make -pn | grep "^.PHONY:"
 
+init-database:
+	cd packages/device-manager && bin/console migrations:migrate --no-interaction
+
+init-fixtures:
+	cd packages/device-manager && tests/console doctrine:fixtures:load
 
 cs:
 	vendor/bin/phpcs
