@@ -1,0 +1,261 @@
+openapi: 3.0.0
+x-stoplight:
+  id: x1lf8qshy5q69
+info:
+  title: DeviceManager
+  version: '1.0'
+  description: Dokumentace API pro službu Správá zařízení
+  contact:
+    name: Alois
+    url: 'https://foo.cz'
+    email: foo@foo.cz
+  license:
+    name: MIT
+    url: 'https://foo.cz'
+servers:
+  - url: 'http://localhost:8080'
+tags:
+  - name: Uživatelé
+    description: Endpointy pro práci s uživateli
+  - name: Zařízení
+    description: Endpointy pro práci se zařízeními
+paths:
+  '/users/{userId}':
+    parameters:
+      - schema:
+          type: string
+        name: userId
+        in: path
+        required: true
+        description: ID uživatele
+    get:
+      summary: Získání informací o uživateli
+      tags:
+        - Uživatelé
+      responses:
+        '200':
+          description: Získání informací o uživateli
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                Get User Alice Smith:
+                  value:
+                    id: id
+                    firstName: Alice
+                    lastName: Smith
+        '404':
+          description: Uživatel nenalezen
+      operationId: get-users-userId
+      description: Získání informací o uživateli
+      x-stoplight:
+        id: ue71nf25huher
+  /devices:
+    get:
+      summary: Listování zařízeními
+      tags:
+        - Zařízení
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - items
+                  - totalCount
+                properties:
+                  items:
+                    type: array
+                    x-stoplight:
+                      id: jrl0bv0mu2tmn
+                    items:
+                      $ref: '#/components/schemas/Device'
+                  totalCount:
+                    type: number
+                    x-stoplight:
+                      id: pdfsjgpbyeifa
+                    description: |
+                      Počet všech záznamů
+      operationId: get-devices
+      x-stoplight:
+        id: jdkw5v479d6yl
+      description: Listování zařízeními
+    parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+    post:
+      summary: Založení nového zařízení
+      tags:
+        - Zařízení
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+      operationId: post-devices
+      x-stoplight:
+        id: x61tsce8w7cca
+      description: Založení nového zařízení
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+                - hostname
+                - type
+                - os
+                - owner
+              properties:
+                id:
+                  type: string
+                  x-stoplight:
+                    id: 4j2ek61rbt245
+                  description: ID zařízení.
+                hostname:
+                  type: string
+                  x-stoplight:
+                    id: 84p7fsn79uwrw
+                  description: |
+                    Síťový název
+                type:
+                  $ref: '#/components/schemas/DeviceType'
+                os:
+                  $ref: '#/components/schemas/DeviceOs'
+                owner:
+                  type: string
+                  x-stoplight:
+                    id: 0xhimmdx4v457
+                  description: |
+                    Id vlastníka
+  '/devices/{deviceId}':
+    get:
+      summary: Získání informací o zařízení
+      tags:
+        - Zařízení
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+      operationId: get-devices-deviceId
+      description: Získání informací o zařízení
+      x-stoplight:
+        id: 2973uocgro18e
+    parameters:
+      - schema:
+          type: string
+        name: deviceId
+        in: path
+        required: true
+        description: Id zařízení
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      x-examples:
+        Alice Smith:
+          id: '142'
+          firstName: Alice
+          lastName: Smith
+      x-stoplight:
+        id: 0feq6otxsqx9k
+      required:
+        - id
+        - firstName
+        - lastName
+      properties:
+        id:
+          type: string
+          description: Unikátní ID uživatele.
+          x-stoplight:
+            id: cn2ebgg3sg432
+        firstName:
+          type: string
+          x-stoplight:
+            id: jukl9yay2vd9h
+          description: First name
+        lastName:
+          type: string
+          x-stoplight:
+            id: 3kw7m56fcyupr
+          description: Last name
+    Device:
+      title: Device
+      x-stoplight:
+        id: 6d8uyu3cx3ykf
+      type: object
+      description: Device
+      required:
+        - id
+        - hostname
+        - type
+        - os
+        - owner
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: 70gmeajqt7fgv
+          description: ID zařízení
+        hostname:
+          type: string
+          x-stoplight:
+            id: yhmclanqeu27y
+          description: Síťový název
+        type:
+          $ref: '#/components/schemas/DeviceType'
+        os:
+          $ref: '#/components/schemas/DeviceOs'
+        owner:
+          $ref: '#/components/schemas/User'
+    DeviceOs:
+      title: DeviceOs
+      x-stoplight:
+        id: 5hhlc11up5jwe
+      enum:
+        - linux
+        - windows
+        - macOS
+        - iOS
+        - android
+        - other
+      description: Operační systém
+    DeviceType:
+      title: DeviceType
+      x-stoplight:
+        id: 3nerplw6mwjmt
+      enum:
+        - pc
+        - laptop
+        - tablet
+        - smartphone
+        - server
+        - router
+        - switch
+        - printer
+        - other
+      description: Typ zařízení
+  parameters:
+    offset:
+      name: offset
+      in: query
+      schema:
+        type: string
+      description: Posun v rámci kolekce
+    limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Počet záznamů na stránku
