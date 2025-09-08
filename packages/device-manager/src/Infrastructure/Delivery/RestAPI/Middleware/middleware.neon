@@ -1,0 +1,5 @@
+services:
+	-
+		factory: AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Middleware\BasePathMiddleware
+		arguments:
+			basePath: %api.apiPrefix%

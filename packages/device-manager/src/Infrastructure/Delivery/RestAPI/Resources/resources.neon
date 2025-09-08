@@ -1,0 +1,4 @@
+includes:
+
+services:
+	- AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Resources\PingHandler
