@@ -1,5 +1,6 @@
 <?php declare(strict_types = 1);
 
+use AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Middleware\ApplicationExceptionMiddleware;
 use AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Middleware\BasePathMiddleware;
 use AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Middleware\BodyParamsMiddleware;
 use AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Middleware\DomainExceptionMiddleware;
@@ -37,7 +38,7 @@ return static function (Application $app): void {
 	// Register the routing middleware in the middleware pipeline.
 	// This middleware registers the Mezzio\Router\RouteResult request attribute.
 	$app->pipe(RouteMiddleware::class);
-
+	$app->pipe(ApplicationExceptionMiddleware::class);
 	$app->pipe(BodyParamsMiddleware::class);
 	$app->pipe(DomainExceptionMiddleware::class);
 //	$app->pipe(AuthorizationMiddleware::class);

@@ -2,3 +2,6 @@ includes:
 
 services:
 	- AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Resources\PingHandler
+	- AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Resources\Device\GetDeviceHandler
+	- AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Resources\User\GetUserHandler
+	- AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\Resources\Device\CreateDeviceHandler

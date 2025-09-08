@@ -14,6 +14,12 @@ services:
 	- Mezzio\Helper\UrlHelper
 	- Mezzio\Helper\UrlHelperMiddleware
 
+	mezzio.notFoundHandlerFactory:
+		factory: AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\MezzioBridge\NotFoundHandlerFactory
+
+	mezzio.NotFoundHandler:
+		type: Mezzio\Handler\NotFoundHandler
+		factory: @mezzio.notFoundHandlerFactory::create
 
 	mezzio.fastRouteDispatcherFactory:
 		factory: AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\MezzioBridge\FastRouteDispatcherFactory

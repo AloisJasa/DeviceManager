@@ -15,7 +15,7 @@ parameters:
 		migrationsTable: 'doctrine_migrations'
 	api:
 		docPath: %packageRoot%/doc/device-manager-api-doc.v1.yaml
-		apiPrefix: ''
+		apiPrefix: '/'
 
 extensions:
 	console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
