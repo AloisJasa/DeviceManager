@@ -1,0 +1,60 @@
+includes:
+	- ./Middleware/middleware.neon
+	- ./Resources/resources.neon
+
+services:
+	- AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\MezzioBridge\Container
+	- FastRoute\RouteCollector
+	- FastRoute\DataGenerator\GroupPosBased
+	- FastRoute\RouteParser\Std
+	- Mezzio\Router\RouteCollector
+	- Mezzio\Router\Middleware\RouteMiddleware
+	- Mezzio\Helper\ServerUrlHelper
+	- Mezzio\Helper\ServerUrlMiddleware
+	- Mezzio\Helper\UrlHelper
+	- Mezzio\Helper\UrlHelperMiddleware
+
+
+	mezzio.fastRouteDispatcherFactory:
+		factory: AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\MezzioBridge\FastRouteDispatcherFactory
+
+	-
+		factory: \Mezzio\Application
+		arguments: {
+			pipeline: @mezzio.MiddlewarePipe
+		}
+
+	mezzio.middlewareContainer:
+		factory: Mezzio\MiddlewareContainer
+		autowired: false
+
+	mezzio.MiddlewarePipe:
+		factory: Laminas\Stratigility\MiddlewarePipe
+		autowired: false
+
+	mezzio.fastRouteRouter:
+		factory: Mezzio\Router\FastRouteRouter
+		arguments: {
+			dispatcherFactory: @mezzio.fastRouteDispatcherFactory::create(),
+			config: {
+				cache_enabled: true,
+				cache_file: %tempDir%/cache-fastroute/fastroute.php.cache
+				}
+			}
+
+	mezzio.middlewareFactory:
+		factory: Mezzio\MiddlewareFactory
+		arguments: [
+			@mezzio.middlewareContainer
+		]
+
+	mezzio.requestHandlerRunnerFactory:
+		factory: AloisJasa\DeviceManager\Infrastructure\Delivery\RestAPI\MezzioBridge\RequestHandlerRunnerFactory
+		arguments: [
+			@mezzio.MiddlewarePipe
+		]
+
+
+	mezzio.requestHandlerRunner:
+		type: Laminas\HttpHandlerRunner\RequestHandlerRunner
+		factory: @mezzio.requestHandlerRunnerFactory::create

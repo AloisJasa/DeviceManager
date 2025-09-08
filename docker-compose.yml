@@ -5,6 +5,7 @@ services:
       - .env
     volumes:
       - ./:/var/www/html:delegated
+      - ./docker/apache/device-manager.localhost.conf:/etc/apache2/sites-enabled/device-manager.localhost.conf
       - ./docker/php.ini:/usr/local/etc/php/conf.d/php.ini:delegated
       - ./docker/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:delegated
       - ~/.composer/docker-cache:/root/.composer/cache:cached

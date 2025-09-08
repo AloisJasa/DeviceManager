@@ -9,6 +9,9 @@ includes:
 
 parameters:
 	level: 10
+	shipmonkRules:
+		forbidCheckedExceptionInCallable:
+			enabled: false
 	paths:
 		- packages
 	excludePaths:
